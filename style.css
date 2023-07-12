@@ -1,0 +1,92 @@
+#card img{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}
+
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  
+}
+body{
+    background-image: linear-gradient(to bottom right, rgb(42, 13, 83), rgb(89, 34, 143));
+}
+
+#card h2 {
+    color: aliceblue;
+}
+#card p {
+    margin-left: 5px;
+    color: aliceblue;
+}
+#card a {
+    margin-left: 5px;
+    color: aliceblue;
+    text-decoration: none;
+}
+
+#user-repos .box{
+    width: auto;
+    height: auto;
+    padding-left: 6px;
+    padding-right: 4px;
+    padding-bottom: 4px;
+    border-radius: 3px;
+    background-color:  rgb(66, 25, 123);
+}
+
+#user-repos :hover{
+    cursor: pointer;
+    background-color:rgb(56, 6, 106);
+}
+
+#user-repos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.user-link{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+@media (min-width: 768px) {
+    .card{
+        width: auto;
+        padding: 30px;
+        background-image: linear-gradient(to bottom right, rgb(42, 13, 83), rgb(103, 56, 150));
+    }
+    
+}
+@media (max-width: 768px) {
+    #card .image{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        margin-top: 10px;
+    }
+
+    #card h2 {
+        margin-top: 15px;
+        text-align: center;
+    }
+    #card p{
+        margin-top: 15px;
+        text-align: center;
+    }
+    .card{
+        width: auto;
+        padding: 10px;
+        background-image: linear-gradient(to bottom right, rgb(42, 13, 83), rgb(103, 56, 150));
+    }
+    
+}

@@ -1,16 +1,16 @@
 
 const main = document.querySelector('#card');
-
+const searchBox = document.querySelector("#search");
 async function getUser(username) {
     const response = await fetch("https://api.github.com/users/" + username);
     const data = await response.json(); // Convert response to JSON
     console.log(data); // Log the response data
     const user =
         `   <div class="row user">
-        <div class="col-sm-12 col-md-5 col-lg-5 image">
+        <div class="col-sm-12 col-md-5 col-lg-3 image">
             <img src=${data.avatar_url}/>
         </div>
-        <div class="col-sm-12 col-lg-7 col-md-7 user-info">
+        <div class="col-sm-12 col-lg-9 col-md-7 user-info">
             <h2> ${data.name} </h2>
             <p> ${data.bio} </p>
 
@@ -28,33 +28,41 @@ async function getUser(username) {
     </div> `;
 
     main.innerHTML = user;
-    userRepo(username);
+   userRepo(username);
 
 }
 
-getUser("i-am-bhaggi"); 
-
 async function userRepo(username) {
-    const repos = document.querySelector("#user-repos") 
-     const response = await fetch("https://api.github.com/users/" + username + "/repos");
-     const data = await response.json();
-     console.log(data);
+    const repos = document.querySelector("#user-repos");
+    const response = await fetch("https://api.github.com/users/" + username + "/repos");
+    const data = await response.json();
+    console.log(data);
 
-
-     data.forEach((item)=>{
-        console.log(item);   
-            const elem = document.createElement("a");
-            elem.classList.add("box");
-            elem.href = item.html_url;
-            elem.innerText = item.name;
-            elem.target = "_blank";
-            repos.appendChild(elem)
-        
-     })
-     }
+    data.forEach((item) => {
+      console.log(item);
+      const elem = document.createElement("a");
+        elem.classList.add("box");
+        elem.href = item.html_url;
+        elem.innerText = item.name;
+        elem.target = "_blank";
+        repos.appendChild(elem);
     
+    });
+  }
 
-userRepo("i-am-bhaggi")
- // <p style="margin-right: 20px;" class="box">Repo 1</p>
-                // <p style="margin-right: 20px;" class="box">Repo 2</p>
-                // <p class="box">Repo 3</p>
+const formSubmit =()=>{
+   
+    if(searchBox.value != ""){
+        getUser(searchBox.value);
+        searchBox.value ="";
+    }
+    return false;
+}
+
+
+searchBox.addEventListener(
+    "focusout",
+    function(){
+        formSubmit();
+    }
+)
